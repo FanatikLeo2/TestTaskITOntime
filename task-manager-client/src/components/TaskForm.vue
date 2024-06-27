@@ -1,10 +1,6 @@
 <template>
     <form @submit.prevent="onSubmit">
       <div>
-        <label for="number">Number</label>
-        <input v-model="localTask.number" id="number" required />
-      </div>
-      <div>
         <label for="title">Title</label>
         <input v-model="localTask.title" id="title" required />
       </div>
