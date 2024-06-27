@@ -13,9 +13,15 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 const mongoose_1 = __importDefault(require("mongoose"));
+const dotenv_1 = __importDefault(require("dotenv"));
+dotenv_1.default.config();
+const mongoURI = process.env.MONGO_URI;
+if (!mongoURI) {
+    throw new Error('MONGO_URI is not defined in the environment variables');
+}
 const connectDB = () => __awaiter(void 0, void 0, void 0, function* () {
     try {
-        yield mongoose_1.default.connect('mongodb+srv://shtopinleonid:bIYrdSZbDqc6EEQE@cluster0.ugobfs5.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0', {});
+        yield mongoose_1.default.connect(mongoURI, {});
         console.log('MongoDB connected');
     }
     catch (error) {
